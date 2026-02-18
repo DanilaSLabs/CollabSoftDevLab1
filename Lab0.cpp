@@ -2,6 +2,7 @@
 #include <string>
 using namespace std;
 
+//prototypes
 void printMenu();
 void exit();
 double sumTwoNumbers();
@@ -33,7 +34,8 @@ int main() {
             break;
         case 4:
             break;
-
+        default:
+            cerr <<  "Invalid choice. Please try again." << endl;
         }
         return 0;
     }while (choice != 0);

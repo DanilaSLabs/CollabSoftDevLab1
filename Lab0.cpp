@@ -26,11 +26,11 @@ int main() {
             break;
 
         case 1:
-            sumTwoNumbers();
+            sumTwoNumbers(); //todo: check if this func works
             break;
-        case 2:
+        case 2: //todo: make case 2 
             break;
-        case 3:
+        case 3: 
             break;
         case 4:
             break;

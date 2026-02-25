@@ -55,9 +55,9 @@ int main() {
 
         case 2:
             do{
-                cout << "Enter the radius: ";
+                cout << "Enter the radius (>0): ";
                 cin >> radius;
-            }while(radius < 0 or radius > 100);
+            }while(radius <= 0);
 
             cout << "Area of the circle is: " << areaOfCircle(radius) << endl;
             break;

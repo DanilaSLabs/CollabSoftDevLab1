@@ -2,6 +2,9 @@
 #include <string>
 using namespace std;
 
+//global constants
+const double PI = 3.14159;
+
 //prototypes
 double sumTwoNumbers(double num1, double num2);
 double areaOfCircle(double radius);
@@ -10,6 +13,7 @@ double calculatePriceWithVat(double price);
 
 
 int main() {
+
     int choice;
     double num1 = 0, num2 = 0;
     double radius = 0;
@@ -50,8 +54,12 @@ int main() {
             break;
 
         case 2:
-            cout << "Enter the radius: ";
-            cin >> radius;
+            do{
+                cout << "Enter the radius: ";
+                cin >> radius;
+            }while(radius < 0 or radius > 100);
+
+            cout << "Area of the circle is: " << areaOfCircle(radius) << endl;
             break;
         case 3: 
             break;
@@ -75,5 +83,5 @@ double sumTwoNumbers(double num1, double num2) {
 
 
 double areaOfCircle(double radius){
-    return radius*3.14;
+    return radius * radius * PI;
 }

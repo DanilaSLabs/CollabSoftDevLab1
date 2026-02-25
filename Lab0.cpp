@@ -3,9 +3,7 @@
 using namespace std;
 
 //prototypes
-void printMenu();
-void exit();
-double sumTwoNumbers(int a, int b);
+double sumTwoNumbers(double num1, double num2);
 double calculateArea(double r);
 double calculateCircumference(double r);
 double calculatePriceWithVat(double price);
@@ -13,9 +11,17 @@ double calculatePriceWithVat(double price);
 
 int main() {
     int choice;
-    double num1, num2;
+    double num1 = 0, num2 = 0;
     do {
-        printMenu();
+
+        //printing the menu
+        cout << "----- Menu -----" << endl;
+        cout << "0) Exit" << endl;
+        cout << "1) Sum two numbers" << endl;
+        cout << "2) Calculate area of a circle" << endl; 
+        cout << "3) Calculate circumference of a circle" << endl;
+        cout << "4) Calculate price with VAT" << endl;
+
         cout << "Enter choice: ";
 
         cin >> choice;
@@ -51,33 +57,15 @@ int main() {
             cerr <<  "Invalid choice. Please try again." << endl;
         }
     }while (choice != 0);
-    exit();
+    cout << "Please come back soon:)";
 
     return 0;
 }
 
 
-// shows menu
-void printMenu() {
-
-    cout << "----- Menu -----" << endl;
-    cout << "0) Exit" << endl;
-    cout << "1) Sum two numbers" << endl;
-    cout << "2) Calculate area of a circle" << endl; 
-    cout << "3) Calculate circumference of a circle" << endl;
-    cout << "4) Calculate price with VAT" << endl;
-
-    return ;
-}
-
-// shows exit message
-void exit() {
-    cout << "Goodbye!" << endl;
-}
-
 
 // sums two numbers and shows the result
-double sumTwoNumbers(int a, int b) {
-    return a + b;
+double sumTwoNumbers(double num1, double num2) {
+    return num1 + num2;
 }
 

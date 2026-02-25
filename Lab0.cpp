@@ -58,7 +58,7 @@ int main() {
                 cin >> num2;
             }while(num2 < 0 or num2 > 100);
 
-            cout << "Sum is: " << sumTwoNumbers(num1, num2);
+            cout << "Sum is: " << sumTwoNumbers(num1, num2) << endl;
             break;
 
         case 2:

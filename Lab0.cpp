@@ -41,12 +41,13 @@ int main() {
             }
 
             do{
-                cout << "Enter the second number: ";
+                cout << "Enter the second number (0 - 100): ";
                 cin >> num2;
-            }while(1 == 1);
+            }while(num2 < 0 or num2 > 100);
 
-            cout << "The sum is: " << sumTwoNumbers(num1, num2); //todo: check if this func works
+            cout << "Sum is: " << sumTwoNumbers(num1, num2);
             break;
+            
         case 2: //todo: make case 2 
             break;
         case 3: 

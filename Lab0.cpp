@@ -5,7 +5,7 @@ using namespace std;
 //prototypes
 void printMenu();
 void exit();
-double sumTwoNumbers();
+double sumTwoNumbers(int a, int b);
 double calculateArea(double r);
 double calculateCircumference(double r);
 double calculatePriceWithVat(double price);
@@ -13,6 +13,7 @@ double calculatePriceWithVat(double price);
 
 int main() {
     int choice;
+    double num1, num2;
     do {
         printMenu();
         cout << "Enter choice: ";
@@ -21,12 +22,22 @@ int main() {
 
         switch (choice) {
 
-        case 0:
-            exit();
+        case 0: //No code needed
             break;
 
         case 1:
-            sumTwoNumbers(); //todo: check if this func works
+            cout << "Enter the first number: ";
+            cin >> num1;
+            
+            if (num1 < 0 or num1 > 100){
+                cerr << "Must be in range 0 - 100: ";
+                cin >> num;
+            }
+
+            cout << "Enter the second number: ";
+            cin >> num2;
+
+            cout << "The sum is: " << sumTwoNumbers(num1, num2); //todo: check if this func works
             break;
         case 2: //todo: make case 2 
             break;
@@ -37,8 +48,10 @@ int main() {
         default:
             cerr <<  "Invalid choice. Please try again." << endl;
         }
-        return 0;
     }while (choice != 0);
+    exit();
+
+    return 0;
 }
 
 
@@ -62,11 +75,7 @@ void exit() {
 
 
 // sums two numbers and shows the result
-double sumTwoNumbers() {
-    int a, b;
-    cout << "Enter two numbers: ";
-    cin >> a >> b;
-    cout << "The sum of " << a << " and " << b << " is: " << a+b;
+double sumTwoNumbers(int a, int b) {
     return a + b;
 }
 

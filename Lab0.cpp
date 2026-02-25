@@ -8,17 +8,23 @@ using namespace std;
 const double PI = 3.14159;
 
 //prototypes
-double sumTwoNumbers(double num1, double num2);
-double areaOfCircle(double radius);
-double calculateCircumference(double radius);
-double calculatePriceWithVat(double price);
+double sumTwoNumbers(const double num1, const double num2);
+double areaOfCircle(const double radius);
+double calculateCircumference(const double radius);
+double calculatePriceWithVat(const double price, const double VAT);
 
 
 int main() {
 
+    //local input variables
     int choice;
     double num1 = 0, num2 = 0;
     double radius = 0;
+    double price = 0;
+
+    //local consts
+    const double VAT = 1.19;
+
     do {
 
         //printing the menu
@@ -56,6 +62,7 @@ int main() {
             break;
 
         case 2:
+
             do{
                 cout << "Enter the radius (>0): ";
                 cin >> radius;
@@ -63,7 +70,9 @@ int main() {
 
             cout << "Area of the circle is: " << areaOfCircle(radius) << endl;
             break;
+
         case 3: 
+
             do{
                 cout << "Enter the radius (>0): ";
                 cin >> radius;
@@ -72,9 +81,17 @@ int main() {
             break;
 
         case 4:
+
+            do{
+                cout << "Enter the price (> 0): ";
+                cin >> price;
+            }while(price <= 0);
+            cout << "Price with the VAT is: " << calculatePriceWithVat(price, VAT) << endl;
             break;
+
         default:
             cerr <<  "Invalid choice. Please try again." << endl;
+
         }
     }while (choice != 0);
     cout << "Please come back soon:)";
@@ -103,4 +120,11 @@ double calculateCircumference(const double radius){
     assert(radius > 0);
 
     return 2 * PI * radius;
+}
+
+//calculates the price with the VAT
+double calculatePriceWithVat(const double price, const double VAT){
+    assert(price > 0);
+
+    return price * VAT;
 }

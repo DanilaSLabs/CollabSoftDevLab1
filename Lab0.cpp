@@ -29,13 +29,15 @@ int main() {
             cout << "Enter the first number: ";
             cin >> num1;
             
-            if (num1 < 0 or num1 > 100){
+            while (num1 < 0 or num1 > 100){
                 cerr << "Must be in range 0 - 100: ";
-                cin >> num;
+                cin >> num1;
             }
 
-            cout << "Enter the second number: ";
-            cin >> num2;
+            do{
+                cout << "Enter the second number: ";
+                cin >> num2;
+            }while(1 == 1);
 
             cout << "The sum is: " << sumTwoNumbers(num1, num2); //todo: check if this func works
             break;

@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <cassert>
+#include <limits>
 using namespace std;
 
 //global constants
@@ -8,7 +10,7 @@ const double PI = 3.14159;
 //prototypes
 double sumTwoNumbers(double num1, double num2);
 double areaOfCircle(double radius);
-double calculateCircumference(double r);
+double calculateCircumference(double radius);
 double calculatePriceWithVat(double price);
 
 
@@ -62,7 +64,13 @@ int main() {
             cout << "Area of the circle is: " << areaOfCircle(radius) << endl;
             break;
         case 3: 
+            do{
+                cout << "Enter the radius (>0): ";
+                cin >> radius;
+            }while(radius <= 0);
+            cout << "Circumference of the circle is: " << calculateCircumference(radius) << endl;
             break;
+
         case 4:
             break;
         default:
@@ -77,11 +85,22 @@ int main() {
 
 
 // sums two numbers and shows the result
-double sumTwoNumbers(double num1, double num2) {
+double sumTwoNumbers(const double num1, const double num2) {
+    assert((num1 + num2) <= numeric_limits<double>::max());
+
     return num1 + num2;
 }
 
+//calculated the area of a circle
+double areaOfCircle(const double radius){
+    assert(radius > 0);
 
-double areaOfCircle(double radius){
     return radius * radius * PI;
+}
+
+//calculate the circumference of a circle
+double calculateCircumference(const double radius){
+    assert(radius > 0);
+
+    return 2 * PI * radius;
 }

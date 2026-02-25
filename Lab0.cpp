@@ -12,6 +12,7 @@ double calculatePriceWithVat(double price);
 int main() {
     int choice;
     double num1 = 0, num2 = 0;
+    double radius = 0;
     do {
 
         //printing the menu
@@ -47,8 +48,10 @@ int main() {
 
             cout << "Sum is: " << sumTwoNumbers(num1, num2);
             break;
-            
-        case 2: //todo: make case 2 
+
+        case 2:
+            cout << "Enter the radius: ";
+            cin >> radius;
             break;
         case 3: 
             break;

@@ -4,7 +4,7 @@ using namespace std;
 
 //prototypes
 double sumTwoNumbers(double num1, double num2);
-double calculateArea(double r);
+double areaOfCircle(double radius);
 double calculateCircumference(double r);
 double calculatePriceWithVat(double price);
 
@@ -69,3 +69,7 @@ double sumTwoNumbers(double num1, double num2) {
     return num1 + num2;
 }
 
+
+double areaOfCircle(double radius){
+    return radius*3.14;
+}

@@ -1,4 +1,11 @@
-//Lab1: This file containts a smaill drawing program
+/** \file Lab1.cpp
+ * \brief This file contains a small drawing program
+ * \details This program allows the user to draw simple shapes like lines, squares, and rectangles using a specified character. The user can choose from a menu of options to select the shape they want to draw and provide the necessary dimensions and character for drawing.
+ * \author Daniil Stankevich
+ * \date 2024-06
+ * \version 1.0
+ * \copyright University of Nicosia
+ */
 
 #include <iostream>
 #include <cassert>
@@ -125,6 +132,14 @@ int main(){
     return 0;
 
 }
+
+/**
+ * Function <code>drawHorizontalLine</code> draws a horizontal line specifed by the args
+ * <BR>
+ * @param length the length of the line, must be > 0 and <= MAX_LEN
+ * @param ch the symbol used to draw the line
+ * @return void
+ */
 
 //Draw a horizontal line
 void drawHorizontalLine(const int length, const char ch){

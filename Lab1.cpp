@@ -19,30 +19,40 @@ int main(){
     int length;
     char ch;
 
-    cout << "0) Quit " << endl;
-    cout << "1) Draw a horizontal line " << endl;
-    cout << "2) Draw a vertical line " << endl;
-    cout << "3) Draw a square " << endl;
-    cout << "4) Draw a square filled " << endl;
-    cout << "5) Draw a rectangle " << endl;
-    cout << "6) Draw a rectangle filled " << endl;
-    cout << "Enter choice: " << endl;
-
-    cin >> choice;
-
     do{
+
+        cout << "0) Quit " << endl;
+        cout << "1) Draw a horizontal line " << endl;
+        cout << "2) Draw a vertical line " << endl;
+        cout << "3) Draw a square " << endl;
+        cout << "4) Draw a square filled " << endl;
+        cout << "5) Draw a rectangle " << endl;
+        cout << "6) Draw a rectangle filled " << endl;
+        cout << "Enter choice: " << endl;
+
+        cin >> choice;
+
         if (choice == 0){
             // No code needed
         }
 
         else if(choice == 1){
-            cout << "Enter length of the line: " << endl;
+            cout << "Enter length of the line (>0): " << endl;
             cin >> length;
+
+            do{
+            
+                if(length <= 0 || length > MAX_LEN){
+                    cerr << "Invalid length, try again: " << endl;
+                    cin >> length;
+                }
+            }while(length <= 0 || length > MAX_LEN);
 
             cout << "Enter a symbol to draw the line: " << endl;
             cin >> ch;
         
             drawHorizontalLine(length, ch);
+            cout << endl;
         }
 
         else if(choice == 2){

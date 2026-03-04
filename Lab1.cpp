@@ -4,14 +4,20 @@
 
 using namespace std;
 
-//prototypes
+//Global Constants
+const int MAX_LEN = 100; //Inclusive
+
+
+//Func. prototypes
 void drawHorizontalLine(const int length, const char ch);
 
 
-//Shows a menu
+//Shows a menu ...
 int main(){
 
     int choice;
+    int length;
+    char ch;
 
     cout << "0) Quit " << endl;
     cout << "1) Draw a horizontal line " << endl;
@@ -20,7 +26,7 @@ int main(){
     cout << "4) Draw a square filled " << endl;
     cout << "5) Draw a rectangle " << endl;
     cout << "6) Draw a rectangle filled " << endl;
-    cout << "Enter chice: " << endl;
+    cout << "Enter choice: " << endl;
 
     cin >> choice;
 
@@ -31,11 +37,9 @@ int main(){
 
         else if(choice == 1){
             cout << "Enter length of the line: " << endl;
-            int length;
             cin >> length;
 
             cout << "Enter a symbol to draw the line: " << endl;
-            char ch;
             cin >> ch;
         
             drawHorizontalLine(length, ch);
@@ -82,5 +86,6 @@ void drawHorizontalLine(const int length, const char ch){
         cout << ch;
     }
 
+    cout << endl;
 
 }

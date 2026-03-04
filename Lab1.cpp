@@ -6,11 +6,16 @@ using namespace std;
 
 //Global Constants
 const int MAX_LEN = 100; //Inclusive
+const int MAX_HEIGHT = 100; //Inclusive
 
 
 //Func. prototypes
 void drawHorizontalLine(const int length, const char ch);
-
+void drawVerticalLine(const int height, const char ch);
+void drawSquare(const int size, const char ch);
+void drawSquareFilled(const int size, const char ch);
+void drawRectangle(const int width, const int height, const char ch);
+void drawRectangleFilled(const int width, const int height, const char ch);
 
 //Shows a menu ...
 int main(){
@@ -18,6 +23,7 @@ int main(){
     int choice;
     int length;
     char ch;
+    int height;
 
     do{
 
@@ -56,7 +62,22 @@ int main(){
         }
 
         else if(choice == 2){
-            //TODO
+
+            cout << "Enter height of the line (>0): " << endl;
+            cin >> height;
+
+            do{
+            
+                if(height <= 0 || height > MAX_HEIGHT){
+                    cerr << "Invalid height, try again: " << endl;
+                    cin >> height;
+                }
+            }while(height <= 0 || height > MAX_HEIGHT);
+
+            cout << "Enter a symbol to draw the line: " << endl;
+            cin >> ch;
+
+            drawVerticalLine(height, ch);
         }
 
         else if(choice == 3){
@@ -98,4 +119,15 @@ void drawHorizontalLine(const int length, const char ch){
 
     cout << endl;
 
+}
+
+//Draw a vertical line
+void drawVerticalLine(const int height, const char ch){
+    cout << endl;
+
+    for(int i = 0; i < height; i++){
+        cout << ch << endl;
+    }
+
+    cout << endl;
 }

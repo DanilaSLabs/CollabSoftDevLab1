@@ -30,7 +30,15 @@ int main(){
         }
 
         else if(choice == 1){
-            //TODO
+            cout << "Enter length of the line: " << endl;
+            int length;
+            cin >> length;
+
+            cout << "Enter a symbol to draw the line: " << endl;
+            char ch;
+            cin >> ch;
+        
+            drawHorizontalLine(length, ch);
         }
 
         else if(choice == 2){

@@ -29,6 +29,7 @@ void drawRandomShapes(const int numShapes);
 
 //Shows a menu ...
 int main(){
+    const int MAX_SHAPES = 10;
 
     int choice;
     int length;
@@ -36,6 +37,8 @@ int main(){
     int height;
     int size;
     int width;
+
+    srand(time(0)); //Seed the rand
 
     do{
 
@@ -381,9 +384,52 @@ void drawRectangleFilled(const int width, const int height, const char ch){
     cout << endl;
 }
 
+/**
+ * Function <code>drawRandomShapes</code> draws a specified number of random shapes
+ * <BR>
+ * @param numShapes the number of random shapes to draw
+ * @return void
+ */
+//Draw random shapes
 void drawRandomShapes(const int numShapes){
-    //TODO
+    assert(numShapes > 0);
+    int shapeType;
+    int shapeLength;
+    char shapeChar;
+
+    const int MAX_RANDOM_LEN = 20;
+    const int MIN_RANDOM_LEN = 1;
+
     cout << endl;
     cout << "Draws " << numShapes << " random shapes" << endl;
+
+    for(int i = 0; i < numShapes; i++){
+        //Define the shape
+        shapeType = 1;
+        shapeLength = rand() % (MAX_RANDOM_LEN - MIN_RANDOM_LEN + 1) + MIN_RANDOM_LEN; //Length between 1 and MAX_LEN
+        shapeChar = rand() % 94 + 33; //Printable characters in ASCII
+
+        //Draw the shape
+        switch (shapeType)
+        {
+        case 1:
+            drawHorizontalLine(shapeLength, shapeChar);
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+        case 6:
+            break;
+        default:
+            assert(true); //Should never happen
+            break;
+        }
+    }
+
     cout << endl;
 }

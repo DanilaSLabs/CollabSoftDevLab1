@@ -153,7 +153,29 @@ int main(){
         }
 
         else if(choice == 6){
-            //TODO
+            
+            cout << "Enter width of the rectangle (>0): " << endl;
+            cin >> width;
+            do{
+                if(width <= 0 || width > MAX_LEN){
+                    cerr << "Invalid width, try again: " << endl;
+                    cin >> width;
+                }
+            }while(width <= 0 || width > MAX_LEN);
+
+            cout << "Enter height of the rectangle (>0): " << endl;
+            cin >> height;
+            do{
+                if(height <= 0 || height > MAX_HEIGHT){
+                    cerr << "Invalid height, try again: " << endl;
+                    cin >> height;
+                }
+            }while(height <= 0 || height > MAX_HEIGHT);
+
+            cout << "Enter a symbol to draw the rectangle: " << endl;
+            cin >> ch;
+
+            drawRectangleFilled(width, height, ch);
         }
         
         else {
@@ -284,6 +306,28 @@ void drawRectangle(const int width, const int height, const char ch){
             else{
                 cout << " ";
             }
+        }
+        cout << endl;
+    }
+    cout << endl;
+}
+
+/**
+ * Function <code>drawRectangleFilled</code> draws a filled rectangle specifed by the args
+ * <BR>
+ * @param width the width of the rectangle, must be > 0 and <= MAX_LEN
+ * @param height the height of the rectangle, must be > 0 and <= MAX_HEIGHT
+ * @param ch the symbol used to draw the rectangle
+ * @return void
+ */
+//Draw a filled rectangle
+void drawRectangleFilled(const int width, const int height, const char ch){
+    assert(width > 0 && width <= MAX_LEN);
+    assert(height > 0 && height <= MAX_HEIGHT);
+    cout << endl;
+    for(int i = 0; i < height; i++){
+        for(int j = 0; j < width; j++){
+            cout << ch;
         }
         cout << endl;
     }

@@ -68,6 +68,12 @@ int main(){
             cout << "Enter a symbol to draw the line: " << endl;
             //TODO: check if only 1 symbol is entered
             cin >> ch;
+            do{
+                if(ch == ' ' || ch >= 127 || ch <= 32){
+                    cerr << "Invalid symbol, try again: " << endl;
+                    cin >> ch;
+                }
+            }while(ch == ' ' || ch >= 127 || ch <= 32);
         
             drawHorizontalLine(length, ch);
             cout << endl;
@@ -88,6 +94,12 @@ int main(){
 
             cout << "Enter a symbol to draw the line: " << endl;
             cin >> ch;
+            do{
+                if(ch == ' ' || ch >= 127 || ch <= 32){
+                    cerr << "Invalid symbol, try again: " << endl;
+                    cin >> ch;
+                }
+            }while(ch == ' ' || ch >= 127 || ch <= 32);
 
             drawVerticalLine(height, ch);
         }
@@ -106,6 +118,12 @@ int main(){
 
             cout << "Enter a symbol to draw the square: " << endl;
             cin >> ch;  
+            do{
+                if(ch == ' ' || ch >= 127 || ch <= 32){
+                    cerr << "Invalid symbol, try again: " << endl;
+                    cin >> ch;
+                }
+            }while(ch == ' ' || ch >= 127 || ch <= 32);
 
             drawSquare(size, ch);
         }
@@ -123,6 +141,12 @@ int main(){
 
             cout << "Enter a symbol to draw the square: " << endl;
             cin >> ch;
+            do{
+                if(ch == ' ' || ch >= 127 || ch <= 32){
+                    cerr << "Invalid symbol, try again: " << endl;
+                    cin >> ch;
+                }
+            }while(ch == ' ' || ch >= 127 || ch <= 32);
 
             drawSquareFilled(size, ch);
         }
@@ -148,6 +172,12 @@ int main(){
 
             cout << "Enter a symbol to draw the rectangle: " << endl;
             cin >> ch;
+            do{
+                if(ch == ' ' || ch >= 127 || ch <= 32){
+                    cerr << "Invalid symbol, try again: " << endl;
+                    cin >> ch;
+                }
+            }while(ch == ' ' || ch >= 127 || ch <= 32);
 
             drawRectangle(width, height, ch);
         }
@@ -200,7 +230,8 @@ int main(){
 
 //Draw a horizontal line
 void drawHorizontalLine(const int length, const char ch){
-    
+    assert(ch != ' ');
+    assert(ch < 127 && ch > 32);
     assert(length > 0 && length <= MAX_LEN);
 
     cout << endl;
@@ -223,7 +254,8 @@ void drawHorizontalLine(const int length, const char ch){
 
 //Draw a vertical line
 void drawVerticalLine(const int height, const char ch){
-
+    assert(ch != ' ');
+    assert(ch < 127 && ch > 32);
     assert(height > 0 && height <= MAX_HEIGHT);
 
     cout << endl;
@@ -247,6 +279,8 @@ void drawVerticalLine(const int height, const char ch){
 //Draw a square
 void drawSquare(const int size, const char ch){
     assert(size > 0 && size <= MAX_LEN);
+    assert(ch != ' ');
+    assert(ch < 127 && ch > 32);
 
     cout << endl;
 
@@ -274,7 +308,10 @@ void drawSquare(const int size, const char ch){
  */
 //Draw a filled square
 void drawSquareFilled(const int size, const char ch){
-    assert(size > 0 && size <= MAX_LEN);    
+    assert(size > 0 && size <= MAX_LEN);   
+    assert(ch != ' ');
+    assert(ch < 127 && ch > 32); 
+
     cout << endl;
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j++){
@@ -297,6 +334,9 @@ void drawSquareFilled(const int size, const char ch){
 void drawRectangle(const int width, const int height, const char ch){
     assert(width > 0 && width <= MAX_LEN);
     assert(height > 0 && height <= MAX_HEIGHT);
+    assert(ch != ' ');
+    assert(ch < 127 && ch > 32);
+
     cout << endl;
     for(int i = 0; i < height; i++){
         for(int j = 0; j < width; j++){
@@ -324,6 +364,9 @@ void drawRectangle(const int width, const int height, const char ch){
 void drawRectangleFilled(const int width, const int height, const char ch){
     assert(width > 0 && width <= MAX_LEN);
     assert(height > 0 && height <= MAX_HEIGHT);
+    assert(ch != ' ');
+    assert(ch < 127 && ch > 32);
+
     cout << endl;
     for(int i = 0; i < height; i++){
         for(int j = 0; j < width; j++){

@@ -2,7 +2,7 @@
  * \brief This file contains a small drawing program
  * \details This program allows the user to draw simple shapes like lines, squares, and rectangles using a specified character. The user can choose from a menu of options to select the shape they want to draw and provide the necessary dimensions and character for drawing.
  * \author Daniil Stankevich
- * \date 2024-06
+ * \date 2024-06-11
  * \version 1.0
  * \copyright University of Nicosia
  */

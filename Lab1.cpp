@@ -156,6 +156,14 @@ void drawHorizontalLine(const int length, const char ch){
 
 }
 
+/**
+ * Function <code>drawVerticalLine</code> draws a vertical line specifed by the args
+ * <BR>
+ * @param height the height of the line, must be > 0 and <= MAX_HEIGHT
+ * @param ch the symbol used to draw the line
+ * @return void
+ */
+
 //Draw a vertical line
 void drawVerticalLine(const int height, const char ch){
 
@@ -169,6 +177,15 @@ void drawVerticalLine(const int height, const char ch){
 
     cout << endl;
 }
+
+
+/**
+ * Function <code>drawSquare</code> draws a square specifed by the args
+ * <BR>
+ * @param size the size of the square, must be > 0 and <= MAX_LEN
+ * @param ch the symbol used to draw the square
+ * @return void
+ */
 
 //Draw a square
 void drawSquare(const int size, const char ch){

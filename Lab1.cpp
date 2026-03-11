@@ -106,15 +106,15 @@ int main(){
 
         else if(choice == 3){
             //TODO
-            cout << "Enter size of the square (>0): " << endl;
+            cout << "Enter size of the square (>1): " << endl;
             cin >> size;
             do{
             
-                if(size <= 0 || size > MAX_LEN){
+                if(size <= 1 || size > MAX_LEN){
                     cerr << "Invalid size, try again: " << endl;
                     cin >> size;
                 }
-            }while(size <= 0 || size > MAX_LEN);
+            }while(size <= 1 || size > MAX_LEN);
 
             cout << "Enter a symbol to draw the square: " << endl;
             cin >> ch;  
@@ -129,15 +129,15 @@ int main(){
         }
 
         else if(choice == 4){
-            cout << "Enter size of the square (>0): " << endl;
+            cout << "Enter size of the square (>1): " << endl;
             cin >> size;
             do{ 
             
-                if(size <= 0 || size > MAX_LEN){
+                if(size <= 1 || size > MAX_LEN){
                     cerr << "Invalid size, try again: " << endl;
                     cin >> size;
                 }
-            }while(size <= 0 || size > MAX_LEN);
+            }while(size <= 1 || size > MAX_LEN);
 
             cout << "Enter a symbol to draw the square: " << endl;
             cin >> ch;
@@ -152,23 +152,23 @@ int main(){
         }
 
         else if(choice == 5){
-            cout << "Enter width of the rectangle (>0): " << endl;
+            cout << "Enter width of the rectangle (>1): " << endl;
             cin >> width;
             do{
-                if(width <= 0 || width > MAX_LEN){
+                if(width <= 1 || width > MAX_LEN){
                     cerr << "Invalid width, try again: " << endl;
                     cin >> width;
                 }
-            }while(width <= 0 || width > MAX_LEN);
+            }while(width <= 1 || width > MAX_LEN);
 
-            cout << "Enter height of the rectangle (>0): " << endl;
+            cout << "Enter height of the rectangle (>1): " << endl;
             cin >> height;
             do{
-                if(height <= 0 || height > MAX_HEIGHT){
+                if(height <= 1 || height > MAX_HEIGHT){
                     cerr << "Invalid height, try again: " << endl;
                     cin >> height;
                 }
-            }while(height <= 0 || height > MAX_HEIGHT);
+            }while(height <= 1 || height > MAX_HEIGHT);
 
             cout << "Enter a symbol to draw the rectangle: " << endl;
             cin >> ch;
@@ -184,23 +184,23 @@ int main(){
 
         else if(choice == 6){
             
-            cout << "Enter width of the rectangle (>0): " << endl;
+            cout << "Enter width of the rectangle (>1): " << endl;
             cin >> width;
             do{
-                if(width <= 0 || width > MAX_LEN){
+                if(width <= 1 || width > MAX_LEN){
                     cerr << "Invalid width, try again: " << endl;
                     cin >> width;
                 }
-            }while(width <= 0 || width > MAX_LEN);
+            }while(width <= 1 || width > MAX_LEN);
 
-            cout << "Enter height of the rectangle (>0): " << endl;
+            cout << "Enter height of the rectangle (>1): " << endl;
             cin >> height;
             do{
-                if(height <= 0 || height > MAX_HEIGHT){
+                if(height <= 1 || height > MAX_HEIGHT){
                     cerr << "Invalid height, try again: " << endl;
                     cin >> height;
                 }
-            }while(height <= 0 || height > MAX_HEIGHT);
+            }while(height <= 1 || height > MAX_HEIGHT);
 
             cout << "Enter a symbol to draw the rectangle: " << endl;
             cin >> ch;
@@ -278,7 +278,7 @@ void drawVerticalLine(const int height, const char ch){
 
 //Draw a square
 void drawSquare(const int size, const char ch){
-    assert(size > 0 && size <= MAX_LEN);
+    assert(size > 1 && size <= MAX_LEN);
     assert(ch != ' ');
     assert(ch < 127 && ch > 32);
 
@@ -308,7 +308,7 @@ void drawSquare(const int size, const char ch){
  */
 //Draw a filled square
 void drawSquareFilled(const int size, const char ch){
-    assert(size > 0 && size <= MAX_LEN);   
+    assert(size > 1 && size <= MAX_LEN);   
     assert(ch != ' ');
     assert(ch < 127 && ch > 32); 
 
@@ -332,8 +332,8 @@ void drawSquareFilled(const int size, const char ch){
  */
 //Draw a rectangle
 void drawRectangle(const int width, const int height, const char ch){
-    assert(width > 0 && width <= MAX_LEN);
-    assert(height > 0 && height <= MAX_HEIGHT);
+    assert(width > 1 && width <= MAX_LEN);
+    assert(height > 1 && height <= MAX_HEIGHT);
     assert(ch != ' ');
     assert(ch < 127 && ch > 32);
 
@@ -362,8 +362,8 @@ void drawRectangle(const int width, const int height, const char ch){
  */
 //Draw a filled rectangle
 void drawRectangleFilled(const int width, const int height, const char ch){
-    assert(width > 0 && width <= MAX_LEN);
-    assert(height > 0 && height <= MAX_HEIGHT);
+    assert(width > 1 && width <= MAX_LEN);
+    assert(height > 1 && height <= MAX_HEIGHT);
     assert(ch != ' ');
     assert(ch < 127 && ch > 32);
 

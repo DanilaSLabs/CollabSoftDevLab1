@@ -209,7 +209,7 @@ int main(){
             drawRectangleFilled(width, height, ch);
         }
         else if (choice == 7){
-            //TODO
+            drawRandomShapes(5);
         }
         
         else {
@@ -385,4 +385,5 @@ void drawRandomShapes(const int numShapes){
     //TODO
     cout << endl;
     cout << "Draws " << numShapes << " random shapes" << endl;
+    cout << endl;
 }

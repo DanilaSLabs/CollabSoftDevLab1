@@ -212,7 +212,15 @@ int main(){
             drawRectangleFilled(width, height, ch);
         }
         else if (choice == 7){
-            drawRandomShapes(5);
+            cout << "Enter how many random shapes to draw (>0): " << endl;
+            cin >> choice;
+            do{
+                if(choice <= 0 and choice > MAX_SHAPES){
+                    cerr << "Invalid number, try again: " << endl;
+                    cin >> choice;
+                }
+            }while(choice <= 0);   
+            drawRandomShapes(choice);
         }
         
         else {
@@ -405,7 +413,7 @@ void drawRandomShapes(const int numShapes){
 
     for(int i = 0; i < numShapes; i++){
         //Define the shape
-        shapeType = 1;
+        shapeType = rand() % 6 + 1; //Shape type between 1 and 6
         shapeLength = rand() % (MAX_RANDOM_LEN - MIN_RANDOM_LEN + 1) + MIN_RANDOM_LEN; //Length between 1 and MAX_LEN
         shapeChar = rand() % 94 + 33; //Printable characters in ASCII
 
@@ -416,14 +424,19 @@ void drawRandomShapes(const int numShapes){
             drawHorizontalLine(shapeLength, shapeChar);
             break;
         case 2:
+            drawVerticalLine(shapeLength, shapeChar);
             break;
         case 3:
+            drawSquare(shapeLength, shapeChar);
             break;
         case 4:
+            drawSquareFilled(shapeLength, shapeChar);
             break;
         case 5:
+            drawRectangle(shapeLength, shapeLength + 1, shapeChar); //Random rectangle with width = length and height = length + 1
             break;
         case 6:
+            drawRectangleFilled(shapeLength, shapeLength + 1, shapeChar); //Random filled rectangle with width = length and height = length + 1
             break;
         default:
             assert(true); //Should never happen

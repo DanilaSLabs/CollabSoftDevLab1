@@ -25,6 +25,7 @@ void drawSquare(const int size, const char ch);
 void drawSquareFilled(const int size, const char ch);
 void drawRectangle(const int width, const int height, const char ch);
 void drawRectangleFilled(const int width, const int height, const char ch);
+void drawRandomShapes(const int numShapes);
 
 //Shows a menu ...
 int main(){
@@ -45,6 +46,7 @@ int main(){
         cout << "4) Draw a square filled " << endl;
         cout << "5) Draw a rectangle " << endl;
         cout << "6) Draw a rectangle filled " << endl;
+        cout << "7) Draw random shapes " << endl;
         cout << "Enter choice: " << endl;
 
         cin >> choice;
@@ -105,7 +107,6 @@ int main(){
         }
 
         else if(choice == 3){
-            //TODO
             cout << "Enter size of the square (>1): " << endl;
             cin >> size;
             do{
@@ -206,6 +207,9 @@ int main(){
             cin >> ch;
 
             drawRectangleFilled(width, height, ch);
+        }
+        else if (choice == 7){
+            //TODO
         }
         
         else {
@@ -375,4 +379,10 @@ void drawRectangleFilled(const int width, const int height, const char ch){
         cout << endl;
     }
     cout << endl;
+}
+
+void drawRandomShapes(const int numShapes){
+    //TODO
+    cout << endl;
+    cout << "Draws " << numShapes << " random shapes" << endl;
 }

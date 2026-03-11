@@ -66,6 +66,7 @@ int main(){
             }while(length <= 0 || length > MAX_LEN);
 
             cout << "Enter a symbol to draw the line: " << endl;
+            //TODO: check if only 1 symbol is entered
             cin >> ch;
         
             drawHorizontalLine(length, ch);
@@ -110,7 +111,20 @@ int main(){
         }
 
         else if(choice == 4){
-            //TODO
+            cout << "Enter size of the square (>0): " << endl;
+            cin >> size;
+            do{ 
+            
+                if(size <= 0 || size > MAX_LEN){
+                    cerr << "Invalid size, try again: " << endl;
+                    cin >> size;
+                }
+            }while(size <= 0 || size > MAX_LEN);
+
+            cout << "Enter a symbol to draw the square: " << endl;
+            cin >> ch;
+
+            drawSquareFilled(size, ch);
         }
 
         else if(choice == 5){
@@ -205,5 +219,25 @@ void drawSquare(const int size, const char ch){
         cout << endl;
     }
 
+    cout << endl;
+}
+
+/**
+ * Function <code>drawSquareFilled</code> draws a filled square specifed by the args
+ * <BR>
+ * @param size the size of the square, must be > 0 and <= MAX_LEN
+ * @param ch the symbol used to draw the square
+ * @return void
+ */
+//Draw a filled square
+void drawSquareFilled(const int size, const char ch){
+    assert(size > 0 && size <= MAX_LEN);    
+    cout << endl;
+    for(int i = 0; i < size; i++){
+        for(int j = 0; j < size; j++){
+            cout << ch;
+        }
+        cout << endl;
+    }
     cout << endl;
 }

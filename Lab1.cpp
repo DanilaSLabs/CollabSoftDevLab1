@@ -1,14 +1,16 @@
 /** \file Lab1.cpp
  * \brief This file contains a small drawing program
- * \details This program allows the user to draw simple shapes like lines, squares, and rectangles using a specified character. The user can choose from a menu of options to select the shape they want to draw and provide the necessary dimensions and character for drawing.
+ * \details This program allows the user to draw various shapes (horizontal line, vertical line, square, filled square, rectangle, filled rectangle) using a specified character. The user can also choose to draw random shapes or shapes defined in arrays. The program continues to run until the user chooses to quit.
  * \author Daniil Stankevich
- * \date 2024-06-11
+ * \date 2026-03-11
  * \version 1.0
  * \copyright University of Nicosia
  */
 
 #include <iostream>
 #include <cassert>
+#include <cstdlib>
+#include <ctime>
 
 
 using namespace std;
@@ -26,8 +28,14 @@ void drawSquareFilled(const int size, const char ch);
 void drawRectangle(const int width, const int height, const char ch);
 void drawRectangleFilled(const int width, const int height, const char ch);
 void drawRandomShapes(const int numShapes);
+void initializeArrays(int shapeTy[], int shapeLen[], char shapeCh[], const int arrSize);
+void drawArrays(int shapeTy[], int shapeLen[], char shapeCh[], const int arrSize);
 
-//Shows a menu ...
+/**
+ * Function <code>main</code> is the entry point of the program. It displays a menu to the user and allows them to choose which shape to draw. The user can also specify the dimensions and character for drawing the shape. The program continues to run until the user chooses to quit.
+ * <BR>
+ * @return int returns 0 on successful execution
+ */
 int main(){
     const int MAX_SHAPES = 10;
 
@@ -50,6 +58,7 @@ int main(){
         cout << "5) Draw a rectangle " << endl;
         cout << "6) Draw a rectangle filled " << endl;
         cout << "7) Draw random shapes " << endl;
+        cout << "8) Draw shapes from arrays" << endl;
         cout << "Enter choice: " << endl;
 
         cin >> choice;
@@ -208,21 +217,41 @@ int main(){
 
             cout << "Enter a symbol to draw the rectangle: " << endl;
             cin >> ch;
+            do{
+                if(ch == ' ' || ch >= 127 || ch <= 32){
+                    cerr << "Invalid symbol, try again: " << endl;
+                    cin >> ch;
+                }
+            }while(ch == ' ' || ch >= 127 || ch <= 32);
 
             drawRectangleFilled(width, height, ch);
         }
         else if (choice == 7){
+            int numShapes;
+
             cout << "Enter how many random shapes to draw (>0): " << endl;
-            cin >> choice;
+            cin >> numShapes;
+
             do{
-                if(choice <= 0 and choice > MAX_SHAPES){
+                if(numShapes <= 0 || numShapes > MAX_SHAPES){
                     cerr << "Invalid number, try again: " << endl;
-                    cin >> choice;
+                    cin >> numShapes;
                 }
-            }while(choice <= 0);   
-            drawRandomShapes(choice);
+            }while(numShapes <= 0 || numShapes > MAX_SHAPES);
+
+            drawRandomShapes(numShapes);
         }
         
+        else if (choice == 8){
+            const int MAX_ARRAY = 10;
+            int shapeTy[MAX_ARRAY];
+            int shapeLen[MAX_ARRAY];
+            char shapeCh[MAX_ARRAY];
+
+            initializeArrays(shapeTy, shapeLen, shapeCh, MAX_ARRAY);
+            drawArrays(shapeTy, shapeLen, shapeCh, MAX_ARRAY);
+        }
+
         else {
             cerr << "Wrong choice, try again" << endl;
         }
@@ -242,8 +271,6 @@ int main(){
  * @param ch the symbol used to draw the line
  * @return void
  */
-
-//Draw a horizontal line
 void drawHorizontalLine(const int length, const char ch){
     assert(ch != ' ');
     assert(ch < 127 && ch > 32);
@@ -266,8 +293,6 @@ void drawHorizontalLine(const int length, const char ch){
  * @param ch the symbol used to draw the line
  * @return void
  */
-
-//Draw a vertical line
 void drawVerticalLine(const int height, const char ch){
     assert(ch != ' ');
     assert(ch < 127 && ch > 32);
@@ -290,8 +315,6 @@ void drawVerticalLine(const int height, const char ch){
  * @param ch the symbol used to draw the square
  * @return void
  */
-
-//Draw a square
 void drawSquare(const int size, const char ch){
     assert(size > 1 && size <= MAX_LEN);
     assert(ch != ' ');
@@ -321,7 +344,6 @@ void drawSquare(const int size, const char ch){
  * @param ch the symbol used to draw the square
  * @return void
  */
-//Draw a filled square
 void drawSquareFilled(const int size, const char ch){
     assert(size > 1 && size <= MAX_LEN);   
     assert(ch != ' ');
@@ -345,7 +367,6 @@ void drawSquareFilled(const int size, const char ch){
  * @param ch the symbol used to draw the rectangle
  * @return void
  */
-//Draw a rectangle
 void drawRectangle(const int width, const int height, const char ch){
     assert(width > 1 && width <= MAX_LEN);
     assert(height > 1 && height <= MAX_HEIGHT);
@@ -375,7 +396,6 @@ void drawRectangle(const int width, const int height, const char ch){
  * @param ch the symbol used to draw the rectangle
  * @return void
  */
-//Draw a filled rectangle
 void drawRectangleFilled(const int width, const int height, const char ch){
     assert(width > 1 && width <= MAX_LEN);
     assert(height > 1 && height <= MAX_HEIGHT);
@@ -398,7 +418,6 @@ void drawRectangleFilled(const int width, const int height, const char ch){
  * @param numShapes the number of random shapes to draw
  * @return void
  */
-//Draw random shapes
 void drawRandomShapes(const int numShapes){
     assert(numShapes > 0);
     int shapeType;
@@ -439,10 +458,69 @@ void drawRandomShapes(const int numShapes){
             drawRectangleFilled(shapeLength, shapeLength + 1, shapeChar); //Random filled rectangle with width = length and height = length + 1
             break;
         default:
-            assert(true); //Should never happen
+            assert(false); //Should never happen
             break;
         }
     }
 
     cout << endl;
+}
+
+/**
+ * Function <code>initializeArrays</code> initializes the arrays with random values.
+ * <BR>
+ * @param shapeTy array holding the shape type values from 1 to 6
+ * @param shapeLen array holding the shape length values from 1 to 20
+ * @param shapeCh array holding printable ASCII characters from 33 to 126
+ * @param arrSize the size of all arrays, must be > 0
+ * @return void
+ */
+void initializeArrays(int shapeTy[], int shapeLen[], char shapeCh[], const int arrSize) {
+    assert(arrSize > 0);
+
+    for (int i = 0; i < arrSize; i++) {
+        shapeTy[i] = rand() % 6 + 1;          // 1 - 6
+        shapeLen[i] = rand() % 20 + 1;        // 1 - 20
+        shapeCh[i] = static_cast<char>(rand() % 94 + 33); // ASCII 33 - 126
+    }
+}
+
+/**
+ * Function <code>drawArrays</code> loops through the arrays and draws the shapes specified in them.
+ * <BR>
+ * @param shapeTy array holding the shape type values
+ * @param shapeLen array holding the shape length values
+ * @param shapeCh array holding the drawing characters
+ * @param arrSize the size of all arrays, must be > 0
+ * @return void
+ */
+void drawArrays(int shapeTy[], int shapeLen[], char shapeCh[], const int arrSize) {
+    assert(arrSize > 0);
+
+    for (int i = 0; i < arrSize; i++) {
+        switch (shapeTy[i]) {
+        case 1:
+            drawHorizontalLine(shapeLen[i], shapeCh[i]);
+            break;
+        case 2:
+            drawVerticalLine(shapeLen[i], shapeCh[i]);
+            break;
+        case 3:
+            drawSquare(shapeLen[i], shapeCh[i]);
+            break;
+        case 4:
+            drawSquareFilled(shapeLen[i], shapeCh[i]);
+            break;
+        case 5:
+            drawRectangle(shapeLen[i], shapeLen[i], shapeCh[i]);
+            break;
+        case 6:
+            drawRectangleFilled(shapeLen[i], shapeLen[i], shapeCh[i]);
+            break;
+        default:
+            assert(false);
+        }
+
+        cout << endl;
+    }
 }
